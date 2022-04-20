@@ -17,7 +17,7 @@ book_repository.save(book2)
 book3 = Book("Harry Potter2", author1)
 book_repository.save(book3)
 
-print(book_repository.select(1))
+# print(book_repository.select(1))
 
 # print(author_repository.select_all())
 
