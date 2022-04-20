@@ -7,7 +7,7 @@ import repositories.author_repository as author_repository
 
 def save(book):
     sql = "INSERT INTO books (title, author_id) VALUES(%s,%s) RETURNING *"
-    values = [book.name,book.author.id]
+    values = [book.title,book.author.id]
     results = run_sql(sql, values)
     id = results[0]['id']
     book.id = id
@@ -36,7 +36,7 @@ def select(id):
     if len(results) >0:
         result = results[0]
         author = author_repository.select(result['author_id'])
-        book = Book(result['name'], author, result['id'])
+        book = Book(result['title'], author, result['id'])
     return book
 
 
@@ -52,6 +52,6 @@ def delete(id):
 
 
 def update(book):
-    sql = "UPDATE books SET (name, author) = (%s,%s) WHERE id = %s"
+    sql = "UPDATE books SET (title, author) = (%s,%s) WHERE id = %s"
     values = [book.title, book.author, book.id]
     run_sql(sql, values)

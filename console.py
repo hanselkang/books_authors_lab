@@ -10,6 +10,15 @@ author_repository.save(author1)
 author2 = Author("Steven King")
 author_repository.save(author2)
 
+book1 = Book("Harry Potter1",author1)
+book_repository.save(book1)
+book2 = Book("IT",author2)
+book_repository.save(book2)
+book3 = Book("Harry Potter2", author1)
+book_repository.save(book3)
+
+print(book_repository.select(1))
+
 # print(author_repository.select_all())
 
 # print(author_repository.select(1))
